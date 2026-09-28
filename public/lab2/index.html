@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <title>form yuh</title>
+    </head>
+    <body>
+        <h2>картинка</h2>
+        <form action="process.php" method="POST" enctype="multipart/form-data">
+            <label for="file"
+                >сюдии зображення (png, jpg, jpeg до 2 мб, інше не пробувать все
+                одно не вийде):</label
+            ><br /><br />
+            <input
+                type="file"
+                name="uploaded_file"
+                id="file"
+                required
+            /><br /><br />
+            <input type="submit" value="закинути на сервер" />
+        </form>
+
+        <hr />
+
+        <h2>запис у лог</h2>
+        <!-- Окрема форма для тексту -->
+        <form action="text.php" method="POST">
+            <label for="text">сюди текст:</label><br /><br />
+            <textarea
+                name="log_text"
+                id="text"
+                rows="4"
+                cols="40"
+                required
+            ></textarea
+            ><br /><br />
+            <input type="submit" value="Записати у log.txt" />
+        </form>
+
+        <hr />
+
+        <h2>перегляд зображень</h2>
+        <a href="list.php">список завантажених зображень</a>
+    </body>
+</html>
