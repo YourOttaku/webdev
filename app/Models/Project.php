@@ -4,9 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Project extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
+
+    protected $fillable = ['name', 'description', 'user_id'];
+
+    # творець проєкту
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    # задачі проєкту
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    # файли проєкту
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'fileable');
+    }
 }
